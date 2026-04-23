@@ -17,9 +17,6 @@ export class CheatSheet {
   @Column()
   title: string;
 
-  @Column({ type: 'text', nullable: true })
-  description: string;
-
   @Column()
   category: string;
 

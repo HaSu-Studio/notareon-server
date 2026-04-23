@@ -3,6 +3,14 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-echo "Postgres + API (Nest). Swagger: http://localhost:${API_PORT:-3000}/api"
-echo "Run the UI from the frontend repo: cheat-sheet-er ./start.sh"
-exec docker compose up --build "$@"
+if [[ ! -f .env ]]; then
+  if [[ ! -f .env.example ]]; then
+    echo "Нет .env и .env.example — нечего копировать." >&2
+    exit 1
+  fi
+  cp .env.example .env
+  echo "Создан .env из .env.example — поменяй пароли и секреты."
+fi
+
+echo "Postgres + API. Порты и креды — в .env (DB_*, API_PORT)."
+exec docker compose --env-file .env up --build "$@"

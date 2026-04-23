@@ -1,9 +1,4 @@
-import {
-  IsString,
-  IsNotEmpty,
-  IsOptional,
-  IsUUID,
-} from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateCheatSheetDto {
@@ -11,11 +6,6 @@ export class CreateCheatSheetDto {
   @IsString()
   @IsNotEmpty()
   title: string;
-
-  @ApiProperty({ example: 'Common array methods in JavaScript', description: 'Cheat sheet description', required: false })
-  @IsString()
-  @IsOptional()
-  description?: string;
 
   @ApiProperty({ example: 'JavaScript', description: 'Category name' })
   @IsString()
@@ -33,11 +23,6 @@ export class UpdateCheatSheetDto {
   @IsString()
   @IsOptional()
   title?: string;
-
-  @ApiProperty({ example: 'Common array methods in JavaScript', description: 'Cheat sheet description', required: false })
-  @IsString()
-  @IsOptional()
-  description?: string;
 
   @ApiProperty({ example: 'JavaScript', description: 'Category name', required: false })
   @IsString()
