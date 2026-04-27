@@ -26,7 +26,9 @@ import { Category } from './models/category.entity';
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
         entities: [User, CheatSheet, Category],
-        synchronize: configService.get<string>('NODE_ENV') === 'development',
+        synchronize:
+          configService.get<string>('NODE_ENV') === 'development' ||
+          configService.get<string>('DB_SYNCHRONIZE') === 'true',
         logging: configService.get<string>('NODE_ENV') === 'development',
       }),
       inject: [ConfigService],

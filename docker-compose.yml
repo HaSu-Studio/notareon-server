@@ -32,6 +32,7 @@ services:
       DB_DATABASE: ${DB_DATABASE}
       PORT: "3000"
       NODE_ENV: ${NODE_ENV}
+      DB_SYNCHRONIZE: ${DB_SYNCHRONIZE:-false}
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN}
     depends_on:
